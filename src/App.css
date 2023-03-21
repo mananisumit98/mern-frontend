@@ -24,6 +24,12 @@
   color: white;
 }
 
+.login{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +41,54 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.navbar {
+  height: 20px; 
+  widows: 100vw
+}
+
+.main-screen {
+  height: 100vh; 
+  widows: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textbox{
+  height: 25px; 
+  width: 300px;
+  padding-left: 15px; 
+  display: block;
+  margin: 0 0 10px 0
+}
+
+.error-message {
+  display: block;
+  margin: 0 0 5px 0;
+  color: red
+}
+
+.button{
+  height: 30px; 
+  width: 100px
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px ;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Link{
+  text-decoration: none;
+  color: black;
 }
