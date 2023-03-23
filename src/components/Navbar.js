@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { userRoutes } from '../utils/constants/routes';
+import { LOGIN, REGISTER, HOMEPAGE, DASHBOARD } from '../utils/constants/urls';
 
 const Navbar = () => {
 
@@ -9,45 +11,45 @@ const Navbar = () => {
 
     useEffect(() => {
         if ((!isAuthorised && router === "/about") || (!isAuthorised && router === "/dashboard") || (!isAuthorised && router === "/contact-us")) {
-            navigate("/");
+            navigate(HOMEPAGE);
         }
 
         if ((isAuthorised && router === "/login") || (isAuthorised && router === "/register")) {
-            navigate("/dashboard");
+            navigate(DASHBOARD);
         }
 
     }, [])
 
     const logout = () => {
-        console.log("INNNNNNNNNN")
-        localStorage.setItem("auth_token", "")
-        navigate("/");
+        localStorage.removeItem("auth_token");
+        navigate(HOMEPAGE);
     }
 
     return (
         <div className='flex-row'>
-            <div>
-                <Link className='Link' to="/dashboard">Dashboard</Link>
-            </div>
-            <div>
-                <Link className='Link' to="/about">About</Link>
-            </div>
-            <div>
-                <Link className='Link' to="/contact-us">Contact Us</Link>
-            </div>
+
+            {/* Routes which are accessible only after Login */}
+            {userRoutes.map((routes) => {
+                return (
+                    <div>
+                        <Link to={routes.path}>{routes.name}</Link>
+                    </div>
+                )
+            })
+            }
             {!isAuthorised && (
                 <div>
-                    <Link className='Link' to="/login">Login</Link>
+                    <Link to={LOGIN}>Login</Link>
                 </div>
             )}
             {!isAuthorised && (
                 <div>
-                    <Link className='Link' to="/register">Register</Link>
+                    <Link to={REGISTER}>Register</Link>
                 </div>
             )}
             {isAuthorised && (
                 <div>
-                    <Link className='Link' to="/">
+                    <Link to={HOMEPAGE}>
                         <span onClick={logout}>Logout</span>
                     </Link>
                 </div>

@@ -42,43 +42,46 @@ const Register = () => {
     return (
         <div>
             <Navbar />
-            <h1>Registration Form</h1>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor='username' id='username' >Username: </label>
-                <input
-                    type='text'
-                    placeholder='username'
-                    className='textbox'
-                    {...register("username", { required: true })}
-                />
-                {errors.username && errors.username.type === 'required' && <span className='error-message'>
-                    Enter valid Username</span>}
+            <div className='main-screen flex-column'>
+                <h1>Registration Form</h1>
 
-                <label htmlFor='email_id' id='email_id'>Email_id: </label>
-                <input
-                    type='email'
-                    placeholder='email address'
-                    className='textbox'
-                    {...register("email_id", { required: true })}
-                />
-                {errors.email_id && errors.email_id.type === 'required' && <span className='error-message'>
-                    Enter valid Email Address</span>}
+                <form className='mt-20' onSubmit={handleSubmit(onSubmit)}>
+                    <label className='mt-20' htmlFor='username' id='username' >Username: </label>
+                    <input
+                        type='text'
+                        placeholder='username'
+                        className='textbox mt-10'
+                        {...register("username", { required: true })}
+                    />
+                    {errors.username && errors.username.type === 'required' && <span className='error-message'>
+                        Enter valid Username</span>}
 
-                <label htmlFor='password' id='password'>Password: </label>
-                <input
-                    type='password'
-                    placeholder='password'
-                    className='textbox'
-                    {...register("password", { required: true })}
-                />
-                {errors.password && errors.password.type === 'required' && <span className='error-message'>
-                    Enter valid Password</span>}
+                    <label className='mt-20' htmlFor='email_id' id='email_id'>Email_id: </label>
+                    <input
+                        type='email'
+                        placeholder='email address'
+                        className='textbox mt-10'
+                        {...register("email_id", { required: true })}
+                    />
+                    {errors.email_id && errors.email_id.type === 'required' && <span className='error-message'>
+                        Enter valid Email Address</span>}
 
-                <input type="submit" className='button' />
-                <ToastContainer />
+                    <label className='mt-20' htmlFor='password' id='password'>Password: </label>
+                    <input
+                        type='password'
+                        placeholder='password'
+                        className='textbox mt-10'
+                        {...register("password", { required: true })}
+                    />
+                    {errors.password && errors.password.type === 'required' && <span className='error-message'>
+                        Enter valid Password</span>}
 
-            </form>
+                    <input type="submit" className='button' />
+                    <ToastContainer />
+
+                </form>
+            </div>
         </div>
     )
 }

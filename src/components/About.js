@@ -7,7 +7,9 @@ const About = () => {
         <div>
             <Navbar />
             <div className='main-screen'>
-                About
+
+                About Us Page
+
             </div>
         </div>
     )
